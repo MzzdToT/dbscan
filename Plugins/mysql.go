@@ -8,14 +8,19 @@ import (
     
 )
 
+const (
+    ResetColor = "\033[0m"
+    GreenColor = "\033[32m"
+)
 
 // MysqlScan 尝试使用提供的用户名和密码爆破 MySQL 数据库
 func MysqlScan(ip string, user string, pass string, dbPort int) error {
 
     // 构建 MySQL 连接字符串
+    fmt.Pringln("ok")
     dataSourceName := fmt.Sprintf("%s:%s@tcp(%v:%v)/mysql?charset=utf8", user, pass, ip, dbPort)
     if err := MysqlConn(dataSourceName); err == nil {
-        fmt.Printf("爆破成功! ：%v:%v %v:%v\n",ip ,dbPort , user, pass)
+        fmt.Printf("%s爆破成功! ：%v:%v %v:%v%s\n", GreenColor, ip ,dbPort , user, pass, ResetColor)
         return nil
     } else {
         return err
