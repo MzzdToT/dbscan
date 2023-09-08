@@ -1,0 +1,7 @@
+database:
+  - type: mysql
+    port: 3306
+
+  - type: oracle
+    port: 1521
+
